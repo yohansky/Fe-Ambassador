@@ -6,6 +6,10 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import axios from "axios";
 import { RedirectToUsers } from "./components/RedirectToUsers";
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 
 axios.defaults.baseURL = "http://localhost:8080/api";
 // axios.defaults.baseURL = process.env.LOCALHOST_API;
