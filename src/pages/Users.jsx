@@ -3,10 +3,11 @@ import Nav from "../components/Nav";
 import Menu from "../components/Menu";
 import Layout from "../components/Layout";
 import axios from "axios";
-import { Table, TableBody, TableCell, TableFooter, TableHead, TablePagination, TableRow } from "@mui/material";
+import { Button, Table, TableBody, TableCell, TableFooter, TableHead, TablePagination, TableRow } from "@mui/material";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
+  //pagination
   const [page, setPage] = useState(0);
   const perPage = 10;
 
@@ -38,7 +39,11 @@ const Users = () => {
                   {user.first_name} {user.last_name}
                 </TableCell>
                 <TableCell>{user.email}</TableCell>
-                <TableCell></TableCell>
+                <TableCell>
+                  <Button variant="contained" color="primary" href={`users/${user.id}/Links`}>
+                    View
+                  </Button>
+                </TableCell>
               </TableRow>
             );
           })}
