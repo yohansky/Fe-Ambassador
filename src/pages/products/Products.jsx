@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Layout from "../../components/Layout";
-import { Table, TableBody, TableCell, TableFooter, TableHead, TablePagination, TableRow } from "@mui/material";
+import { Button, Table, TableBody, TableCell, TableFooter, TableHead, TablePagination, TableRow, ToggleButtonGroup } from "@mui/material";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -16,8 +16,21 @@ const Products = () => {
     })();
   }, []);
 
+  const del = async (id) => {
+    if (window.confirm("Are you sure?")) {
+      await axios.delete(`/admin/product/${id}`);
+
+      setProducts(products.filter((p) => p.id !== id));
+    }
+  };
+
   return (
     <Layout>
+      <div className="pt-3 pb-2 mb-3 border-bottom">
+        <Button href={"/products/create"} variant="contained" color="primary">
+          Add
+        </Button>
+      </div>
       <Table>
         <TableHead>
           <TableRow>
@@ -31,7 +44,27 @@ const Products = () => {
         </TableHead>
         <TableBody>
           {products.slice(page * perPage, (page + 1) * perPage).map((product) => {
-            return <TableRow></TableRow>;
+            return (
+              <TableRow key={product.id}>
+                <TableCell>{product.id}</TableCell>
+                <TableCell>
+                  <img src={product.image} width={50} />{" "}
+                </TableCell>
+                <TableCell>{product.title}</TableCell>
+                <TableCell>{product.description}</TableCell>
+                <TableCell>{product.price}</TableCell>
+                <TableCell>
+                  <ToggleButtonGroup>
+                    <Button variant="contained" color="warning" href={`/products/${product.id}/edit`}>
+                      Edit
+                    </Button>
+                    <Button variant="contained" color="danger" onClick={() => del(product.id)}>
+                      Delete
+                    </Button>
+                  </ToggleButtonGroup>
+                </TableCell>
+              </TableRow>
+            );
           })}
         </TableBody>
         <TableFooter>

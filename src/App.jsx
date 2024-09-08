@@ -11,6 +11,8 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import Links from "./pages/Links";
+import Products from "./pages/products/Products";
+import ProductForm from "./pages/products/ProductForm";
 
 axios.defaults.baseURL = "http://localhost:8080/api";
 // axios.defaults.baseURL = process.env.LOCALHOST_API;
@@ -25,7 +27,10 @@ function App() {
           <Route path={"/users"} exact Component={Users} />
           <Route path={"/login"} Component={Login} />
           <Route path={"/register"} Component={Register} />
-          <Route path={`/users/:id/Links`} exact Component={Links} />
+          <Route path={`/users/:id/Links`} Component={Links} />
+          <Route path={`/products`} Component={Products} />
+          <Route path={`/products/create`} Component={ProductForm} />
+          <Route path={`/products/:id/edit`} Component={ProductForm} />
         </Routes>
       </BrowserRouter>
     </div>
