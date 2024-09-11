@@ -10,7 +10,7 @@ const Products = () => {
 
   useEffect(() => {
     (async () => {
-      const { data } = await axios("/admin/products");
+      const { data } = await axios.get("/admin/products");
 
       setProducts(data);
     })();
@@ -58,7 +58,7 @@ const Products = () => {
                     <Button variant="contained" color="warning" href={`/products/${product.id}/edit`}>
                       Edit
                     </Button>
-                    <Button variant="contained" color="danger" onClick={() => del(product.id)}>
+                    <Button variant="contained" color="error" onClick={() => del(product.id)}>
                       Delete
                     </Button>
                   </ToggleButtonGroup>
