@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import { Button, TextField } from "@mui/material";
 import axios from "axios";
+import { connect } from "react-redux";
+import { setUser } from "../redux/actions/setUserActions";
 
-const Profile = () => {
+const Profile = (props) => {
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -11,23 +13,20 @@ const Profile = () => {
   const [password_confirm, setPasswordConfirm] = useState("");
 
   useEffect(() => {
-    (async () => {
-      const { data } = await axios.get("/admin/user");
-
-      setFirstName(data.first_name);
-      setLastName(data.last_name);
-      setEmail(data.email);
-    })();
-  }, []);
+    setFirstName(props.user.first_name);
+    setLastName(props.user.last_name);
+    setEmail(props.user.email);
+  }, [props]);
 
   const infoSubmit = async (e) => {
     e.preventDefault();
 
-    await axios.put("/admin/users/info", {
+    const { data } = await axios.put("/admin/users/info", {
       first_name,
       last_name,
       email,
     });
+    props.setUser(data);
   };
 
   const passwordSubmit = async (e) => {
@@ -73,4 +72,11 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default connect(
+  (state) => ({
+    user: state.user,
+  }),
+  (dispatch) => ({
+    setUser: (user) => dispatch(setUser(user)),
+  })
+)(Profile);
