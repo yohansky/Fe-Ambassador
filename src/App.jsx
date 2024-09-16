@@ -14,6 +14,7 @@ import Links from "./pages/Links";
 import Products from "./pages/products/Products";
 import ProductForm from "./pages/products/ProductForm";
 import Orders from "./pages/Orders";
+import Profile from "./pages/Profile";
 
 axios.defaults.baseURL = "http://localhost:8080/api";
 // axios.defaults.baseURL = process.env.LOCALHOST_API;
@@ -28,6 +29,7 @@ function App() {
           <Route path={"/users"} exact Component={Users} />
           <Route path={"/login"} Component={Login} />
           <Route path={"/register"} Component={Register} />
+          <Route path={"/profile"} Component={Profile} />
           <Route path={`/users/:id/Links`} Component={Links} />
           <Route path={`/products`} Component={Products} />
           <Route path={`/products/create`} Component={ProductForm} />
