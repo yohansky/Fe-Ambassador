@@ -8,7 +8,7 @@ const Orders = () => {
 
   useEffect(() => {
     (async () => {
-      const { data } = await axios.get(`/admin/orders`);
+      const { data } = await axios.get(`/orders`);
 
       setOrders(data);
       console.log(data);

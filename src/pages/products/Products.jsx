@@ -10,7 +10,7 @@ const Products = () => {
 
   useEffect(() => {
     (async () => {
-      const { data } = await axios.get("/admin/products");
+      const { data } = await axios.get("/products");
 
       setProducts(data);
     })();
@@ -18,7 +18,7 @@ const Products = () => {
 
   const del = async (id) => {
     if (window.confirm("Are you sure?")) {
-      await axios.delete(`/admin/product/${id}`);
+      await axios.delete(`/product/${id}`);
 
       setProducts(products.filter((p) => p.id !== id));
     }

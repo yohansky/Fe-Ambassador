@@ -11,7 +11,7 @@ const Links = (props) => {
 
   useEffect(() => {
     (async () => {
-      const { data } = await axios.get(`/admin/users/${props.id}/Links`);
+      const { data } = await axios.get(`/users/${props.id}/Links`);
 
       setLinks(data);
       console.log(props);

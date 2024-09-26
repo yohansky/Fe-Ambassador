@@ -12,7 +12,7 @@ const Login = () => {
     e.preventDefault();
 
     await axios.post(
-      "/admin/login",
+      "/login",
       {
         email,
         password,

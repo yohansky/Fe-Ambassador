@@ -13,7 +13,7 @@ const Users = () => {
 
   useEffect(() => {
     (async () => {
-      const { data } = await axios.get("/admin/ambassador");
+      const { data } = await axios.get("/ambassador");
 
       setUsers(data);
     })();

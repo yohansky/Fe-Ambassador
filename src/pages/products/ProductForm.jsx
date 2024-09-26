@@ -16,7 +16,7 @@ const ProductForm = () => {
   useEffect(() => {
     if (id) {
       (async () => {
-        const { data } = await axios.get(`/admin/product/${id}`);
+        const { data } = await axios.get(`/product/${id}`);
 
         setTitle(data.title);
         setDesc(data.description);
@@ -36,9 +36,9 @@ const ProductForm = () => {
     };
 
     if (id) {
-      await axios.put(`/admin/product/${id}`, data);
+      await axios.put(`/product/${id}`, data);
     } else {
-      await axios.post("/admin/products", data);
+      await axios.post("/products", data);
     }
 
     setRedirect(true);

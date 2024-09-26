@@ -21,7 +21,7 @@ const Profile = (props) => {
   const infoSubmit = async (e) => {
     e.preventDefault();
 
-    const { data } = await axios.put("/admin/users/info", {
+    const { data } = await axios.put("/users/info", {
       first_name,
       last_name,
       email,
@@ -32,7 +32,7 @@ const Profile = (props) => {
   const passwordSubmit = async (e) => {
     e.preventDefault();
 
-    await axios.put("/admin/users/password", {
+    await axios.put("/users/password", {
       password,
       password_confirm,
     });

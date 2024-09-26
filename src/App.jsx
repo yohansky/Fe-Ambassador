@@ -16,7 +16,7 @@ import ProductForm from "./pages/products/ProductForm";
 import Orders from "./pages/Orders";
 import Profile from "./pages/Profile";
 
-axios.defaults.baseURL = "http://localhost:8080/api";
+axios.defaults.baseURL = "http://localhost:8080/api/admin";
 // axios.defaults.baseURL = process.env.LOCALHOST_API;
 axios.defaults.withCredentials = true;
 

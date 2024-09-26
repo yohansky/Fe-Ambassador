@@ -12,7 +12,7 @@ const Layout = (props) => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios.get("/admin/user");
+        const { data } = await axios.get("/user");
 
         props.setUser(data);
         console.log(props);
